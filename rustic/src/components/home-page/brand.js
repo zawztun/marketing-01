@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 SwiperCore.use([Pagination, Autoplay]);
-function Brand({ brandItems }) {
+function Brand({ companies }) {
   const brandImage = `relative opacity-40 grayscale-[100px] transition duration-500 hover:grayscale-[0] hover:opacity-100`;
   return (
     <div className="brand-area bg-azure">
@@ -31,16 +31,16 @@ function Brand({ brandItems }) {
               },
             }}
           >
-            {brandItems?.map((brandItem, i) => {
+            {companies?.map((company) => {
               return (
-                <SwiperSlide key={i}>
+                <SwiperSlide key={company.id}>
                   <div className="brand-item">
                     <div className={brandImage}>
                       <Link href="#">
                         <a>
                           <Image
-                            src={brandItem?.clientimage}
-                            alt={brandItem?.title}
+                            src={company?.image.url}
+                            alt={company?.title}
                             width={210}
                             height={90}
                             layout="responsive"

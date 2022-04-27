@@ -25,7 +25,7 @@ function PostSidebar({ categories, tags }) {
             </div>
             <div className='post-sidebar-item mt-[50px]'>
                 <h2 className='text-[20px] font-bold text-[#222] border-[#eee] border-b pb-[11px] mb-[20px]'>
-                    Recent Posts
+                    Recommended products
                 </h2>
                 <ul className='post-list'>
                     <li className='mb-[15px]'>

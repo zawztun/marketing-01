@@ -13,7 +13,6 @@ function Testimonial({ testimonialItems }) {
 
     useEffect(() => {
         if (swiper) {
-            console.log('Swiper instance:', swiper);
             swiper.params.navigation.prevEl = prevRef.current;
             swiper.params.navigation.nextEl = nextRef.current;
             swiper.navigation.init();
@@ -67,7 +66,7 @@ function Testimonial({ testimonialItems }) {
                         }}
                     >
                         {testimonialItems?.map((testimonialItem, i) => {
-                            const Icon = FaIcons[testimonialItem?.quote];
+                            const Icon = FaIcons['FaQuoteRight'];
                             return (
                                 <SwiperSlide key={i}>
                                     <div className='testimonial-block'>
@@ -76,15 +75,15 @@ function Testimonial({ testimonialItems }) {
                                                 <Icon />
                                             </div>
                                             <h2 className='testimonial-author'>
-                                                {testimonialItem?.authorName}
+                                                {testimonialItem?.name}
                                                 <span className='occupation'>
                                                     {
-                                                        testimonialItem?.authorOccupation
+                                                        testimonialItem?.position
                                                     }
                                                 </span>
                                             </h2>
                                             <p className='testimonial-feedback'>
-                                                {testimonialItem?.excerpt}
+                                                {testimonialItem?.message}
                                             </p>
                                         </div>
                                     </div>
