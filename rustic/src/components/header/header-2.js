@@ -55,19 +55,6 @@ function HeaderTwo() {
                                     </li>
                                     <li
                                         className={
-                                            router.pathname == '/posts'
-                                                ? 'active'
-                                                : ''
-                                        }
-                                    >
-                                        <Link href='/posts'>
-                                            <a>
-                                                <span>Products</span>
-                                            </a>
-                                        </Link>
-                                    </li>
-                                    <li
-                                        className={
                                             router.pathname == '/about'
                                                 ? 'active'
                                                 : ''
@@ -79,8 +66,32 @@ function HeaderTwo() {
                                             </a>
                                         </Link>
                                     </li>
-
-
+                                    <li
+                                        className={
+                                            router.pathname == '/projects'
+                                                ? 'active'
+                                                : ''
+                                        }
+                                    >
+                                        <Link href='/projects'>
+                                            <a>
+                                                <span>Product</span>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li
+                                        className={
+                                            router.pathname == '/posts'
+                                                ? 'active'
+                                                : ''
+                                        }
+                                    >
+                                        <Link href='/posts'>
+                                            <a>
+                                                <span>Posts</span>
+                                            </a>
+                                        </Link>
+                                    </li>
                                     <li
                                         className={
                                             router.pathname == '/contact'

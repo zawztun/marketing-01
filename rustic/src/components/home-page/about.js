@@ -1,13 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const aboutDefaults = {
-    motto: 'Over 12 years leading and deeps in interiors industrial',
-    description: "Founded by Robert Downey Jr in 2004, we’re an employee- owned firm pursuing a democratic design process that values everyone’s input.Today we have more than 150 people in London, Hong Kong and Sydney providing architecture, interior & urban design services from concept to completion.",
-    experience: 'We know that good design means  good business'
-};
-
-function About({ about = aboutDefaults }) {
+function About() {
     const subTitle = `text-[18px] leading-[32px] text-secondary uppercase`;
     const title = `lm:text-[42px] lm:leading-[50px] text-[32px] text-black mb-[35px] lg:max-w-[460px]`;
     const desc = `text-[14px] leading-[25px] text-secondary mb-[80px] lg:max-w-[490px]`;
@@ -19,19 +13,19 @@ function About({ about = aboutDefaults }) {
                     <div className='about-content max-md:pt-10'>
                         <span className={subTitle}>About</span>
                         <h2 className={title}>
-                            {
-                                about.motto
-                            }
+                            Over 12 years leading and deeps in interiors
+                            industrial
                         </h2>
                         <h3 className='text-secondary text-2xl mb-12'>
-                            {
-                                about.experience
-                            }
+                            We know that good design means <br /> good business
                         </h3>
                         <p className={desc}>
-                            {
-                                about.description
-                            }
+                            Founded by Robert Downey Jr in 2004, we’re an
+                            employee-owned firm pursuing a democratic design
+                            process that values everyone’s input. Today we have
+                            more than 150 people in London, Hong Kong and Sydney
+                            providing architecture, interior & urban design
+                            services from concept to completion.
                         </p>
                         <Link href='/about'>
                             <a className='boxed-btn text-[18px] leading-[30px]'>
