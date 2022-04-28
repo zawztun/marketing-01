@@ -55,6 +55,19 @@ function HeaderOne() {
                                         </li>
                                         <li
                                             className={
+                                                router.pathname == '/posts'
+                                                    ? 'active'
+                                                    : ''
+                                            }
+                                        >
+                                            <Link href='/posts'>
+                                                <a>
+                                                    <span>Products</span>
+                                                </a>
+                                            </Link>
+                                        </li>
+                                        <li
+                                            className={
                                                 router.pathname == '/about'
                                                     ? 'active'
                                                     : ''
@@ -66,32 +79,8 @@ function HeaderOne() {
                                                 </a>
                                             </Link>
                                         </li>
-                                        <li
-                                            className={
-                                                router.pathname == '/projects'
-                                                    ? 'active'
-                                                    : ''
-                                            }
-                                        >
-                                            <Link href='/projects'>
-                                                <a>
-                                                    <span>Product</span>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li
-                                            className={
-                                                router.pathname == '/posts'
-                                                    ? 'active'
-                                                    : ''
-                                            }
-                                        >
-                                            <Link href='/posts'>
-                                                <a>
-                                                    <span>Posts</span>
-                                                </a>
-                                            </Link>
-                                        </li>
+
+
                                         <li
                                             className={
                                                 router.pathname == '/contact'
@@ -110,16 +99,17 @@ function HeaderOne() {
                             </div>
                             <div className='lg:col-span-3 col-span-6'>
                                 <div className={`outer-box ${headerCss}`}>
+                                    {/* incase localize */}
                                     <ul className='language-list text-white'>
-                                        <li>
+                                        {/* <li>
                                             <Link href='/'>END</Link>
                                         </li>
                                         <li>
                                             <Link href='/'>FRA</Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
-                                    <div className='offcanvas-area'>
-                                        <div className='offcanvas'>
+                                    <div className='offcanvas-area '>
+                                        <div className='offcanvas block md:hidden'>
                                             <button
                                                 className='menu-bars flex text-white text-[24px]'
                                                 aria-label='Right Align'

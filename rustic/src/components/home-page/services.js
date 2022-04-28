@@ -1,8 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import * as AiIcons from 'react-icons/ai';
 
 function Services({ services }) {
+    const [current, setCurrent] = useState({
+        image: {
+            url: '/images/hero/1.jpg'
+        }
+    });
+    let handleClick = (svs) => {
+        // [TODO] : a debounce function is coming soon
+        setCurrent(svs)
+    }
+    let icons = ['AiOutlineHome', 'AiOutlineShoppingCart', 'AiOutlineReload']
     return (
         <div className='service-area md:pt-160 pt-[60px] relative before:bg-pattern-1 before:absolute before:h-[336px] before:w-[336px] before:top-[170px] before:left-[-168px]'>
             <div className='container max-w-full lg:pl-[70px] lg:pr-0'>
@@ -16,13 +27,14 @@ function Services({ services }) {
                                 Best solutions for <br /> your dream.
                             </h2>
                             <div className='fixed-md:grid fixed-md:grid-cols-2 grid max-md:gap-[25px]'>
-                                {services?.map((service) => {
-                                    const Icon = AiIcons[service?.icon];
+
+                                {services?.map((service, index) => {
+                                    const Icon = AiIcons[icons[index]];
                                     return (
                                         <div
-                                            className='service-box'
-                                            key={service?.title}
-                                        >
+                                            onMouseEnter={() => { handleClick(service) }}
+                                            className='service-box cursor-pointer transition-all'
+                                            key={service.id}>
                                             <div className='service-box-inner'>
                                                 <div className='service-list'>
                                                     <div className='icon'>
@@ -33,13 +45,13 @@ function Services({ services }) {
                                                             <Link href='/projects'>
                                                                 <a className='hover:underline'>
                                                                     {
-                                                                        service?.title
+                                                                        service?.name
                                                                     }
                                                                 </a>
                                                             </Link>
                                                         </h3>
                                                         <p className='desc'>
-                                                            {service?.content}
+                                                            {service?.description}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -53,7 +65,8 @@ function Services({ services }) {
                     <div className='lg:col-span-6'>
                         <div className='service-image flex justify-end w-full lg:h-full h-[679px] relative'>
                             <Image
-                                src='/images/service/1.jpg'
+                                src={current?.image.url || current}
+                                loader={() => current?.image.url || null}
                                 alt='Service Image'
                                 quality={70}
                                 layout='fill'

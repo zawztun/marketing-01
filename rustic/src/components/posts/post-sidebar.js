@@ -25,7 +25,7 @@ function PostSidebar({ categories, tags }) {
             </div>
             <div className='post-sidebar-item mt-[50px]'>
                 <h2 className='text-[20px] font-bold text-[#222] border-[#eee] border-b pb-[11px] mb-[20px]'>
-                    Recent Posts
+                    Recommended products
                 </h2>
                 <ul className='post-list'>
                     <li className='mb-[15px]'>
@@ -65,10 +65,10 @@ function PostSidebar({ categories, tags }) {
                 </h2>
                 <ul className='post-list'>
                     {categories.map((category) => (
-                        <li className='mb-[15px] last:mb-0' key={category}>
-                            <Link href={`/category/${category}`}>
+                        <li className='mb-[15px] last:mb-0' key={category.name}>
+                            <Link href={`/category/${category.name}`}>
                                 <a className='hover:underline capitalize'>
-                                    {category}
+                                    {category.name}
                                 </a>
                             </Link>
                         </li>
@@ -81,9 +81,9 @@ function PostSidebar({ categories, tags }) {
                 </h2>
                 <ul className='post-tags flex flex-wrap'>
                     {tags.map((popularTag) => (
-                        <li className=' mr-[10px] mb-[5px]' key={popularTag}>
+                        <li className=' mr-[10px] mb-[5px]' key={popularTag.name}>
                             <Link href={`/tag/${popularTag}`}>
-                                <a className='hover:underline'>{popularTag},</a>
+                                <a className='hover:underline'>{popularTag.name},</a>
                             </Link>
                         </li>
                     ))}

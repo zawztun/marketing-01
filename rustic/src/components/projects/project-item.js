@@ -1,20 +1,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-function ProjectItem(props) {
-    const { title, category, excerpt, image, slug } = props.project;
-
-    const imagePath = `/images/projects/${slug}/${image}`;
-    const linkPath = `/projects/${slug}`;
-
+function ProjectItem({ posts, isValidating }) {
+    const { id, name, description, image } = posts;
+    let category = ['Hello World']
     return (
         <div className={`project-item gallery-item group ${category}`}>
-            <Link href={linkPath}>
+            <Link href={`/posts/${id}`}>
                 <a>
                     <div className='project-img relative before:absolute before:bg-black before:opacity-20 before:w-full before:h-full before:z-[1]'>
                         <Image
-                            src={imagePath}
-                            alt={title}
+                            src={image[0].url}
+                            alt={name}
                             width={472}
                             height={665}
                             layout='responsive'
@@ -24,8 +21,8 @@ function ProjectItem(props) {
                         />
                     </div>
                     <div className='project-content'>
-                        <span className='project-category'>{excerpt}</span>
-                        <h2 className='project-title'>{title}</h2>
+                        <span className='project-category '>{description}</span>
+                        <h2 className='project-title'>{name}</h2>
                     </div>
                 </a>
             </Link>
