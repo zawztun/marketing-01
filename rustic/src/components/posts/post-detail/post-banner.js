@@ -16,7 +16,7 @@ function PostBanner(props) {
                     src={image}
                     alt={title}
                     layout='fill'
-                    objectFit='cover'
+                    objectFit='contain'
                     priority
                 />
             </div>

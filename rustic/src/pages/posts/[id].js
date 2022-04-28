@@ -1,29 +1,26 @@
 import Head from "next/head";
 import { Fragment } from "react";
 import HeaderOne from "../../components/header/header-1";
-import { getAllItems, getItemData, getItemsFiles } from "../../lib/items-util";
 import PostContent from "../../components/posts/post-detail/post-content";
-import { getPostCategories } from "../../lib/getPostCategories";
-import { getRelatedPosts } from "../../lib/getRelatedPosts";
 import DisqusForm from "../../components/posts/disqus-form";
-import { getPostTags } from "../../lib/getPostTags";
 import Link from "next/link";
-
+import { useProductNames, useProductDetail } from "@/query/products";
 function PostDetailPage(props) {
   const { prevPost, nextPost } = props;
+  let { name, description, } = props.product;
   return (
     <Fragment>
       <Head>
-        <title>{props.post.title}</title>
-        <meta name="description" content={props.post.excerpt} />
+        <title>{name}</title>
+        <meta name="description" content={description} />
       </Head>
       <HeaderOne />
       <PostContent
-        post={props.post}
+        post={props.product}
         categories={props.categories}
         tags={props.tags}
       />
-      <DisqusForm />
+      {/*  <DisqusForm />
       <div className="post-pagination pt-[60px]">
         <div className="image-layer relative">
           <div className="grid grid-cols-2 relative text-[18px] leading-6 uppercase font-semibold tracking-[10px] z-[1]">
@@ -57,47 +54,26 @@ function PostDetailPage(props) {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </Fragment>
   );
 }
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const { params } = context;
-  const { slug } = params;
-
-  const post = getItemData(slug, "posts");
-  const posts = getAllItems("posts");
-  const categories = getPostCategories();
-  const tags = getPostTags();
-  const relatedPosts = getRelatedPosts(posts, categories, tags, 4);
-  const currentPostIndex = posts.findIndex((post) => post.slug === slug);
-  const nextPost = posts[currentPostIndex + 1]
-    ? posts[currentPostIndex + 1]
-    : {};
-  const prevPost = posts[currentPostIndex - 1]
-    ? posts[currentPostIndex - 1]
-    : {};
-
+  const data = await useProductDetail(params.id);
   return {
     props: {
-      post,
-      tags,
-      categories,
-      relatedPosts,
-      prevPost,
-      nextPost,
+      ...data
     },
   };
 }
 
-export function getStaticPaths() {
-  const postFilenames = getItemsFiles("posts");
-
-  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
-
+export async function getStaticPaths() {
+  const { products } = await useProductNames()
+  let slugs = products.map((tex) => ({ params: { id: tex.id } }))
   return {
-    paths: slugs.map((slug) => ({ params: { slug: slug } })),
+    paths: products.map((tex) => ({ params: { id: tex.id } })),
     fallback: false,
   };
 }

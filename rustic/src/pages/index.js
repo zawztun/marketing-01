@@ -23,10 +23,10 @@ function HomePage(props) {
 }
 
 export async function getStaticProps() {
-    const hero = await useHomePage();
+    const home = await useHomePage();
     return {
         props: {
-            ...hero,
+            ...home,
         },
         // incremental static generation 
         revalidate: 10,

@@ -3,8 +3,6 @@ import { Fragment } from 'react';
 import Layout from '../components/layout/layout';
 import Head from 'next/head';
 import { ScrollToTop } from '../components/scroll';
-import client from '@/query/client';
-
 function MyApp({ Component, pageProps }) {
     return (
         <Fragment>

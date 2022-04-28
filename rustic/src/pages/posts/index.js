@@ -1,13 +1,16 @@
 import Head from "next/head";
+import React from 'react'
 import { Fragment } from "react";
 import Breadcrumb from "../../components/breadcrumb";
 import HeaderTwo from "../../components/header/header-2";
-import AllItems from "../../components/posts/all-items";
-import { getAllItems } from "../../lib/items-util";
-import { getPostCategories } from "../../lib/getPostCategories";
-import { getPostTags } from "../../lib/getPostTags";
-
-function allItemsPage(props) {
+import useProducts, { useProductQueries } from "@/query/products";
+import AllItems from "@/components/posts/all-items";
+function allItemsPage({ tags, categories }) {
+  const [limit, setLimit] = React.useState(6)
+  const data = useProducts(limit);
+  let loadMore = () => {
+    setLimit(limit + 6)
+  }
   return (
     <Fragment>
       <Head>
@@ -17,24 +20,21 @@ function allItemsPage(props) {
       <HeaderTwo />
       <Breadcrumb activePage={"Posts"} pageTitle={"Our Posts"} />
       <AllItems
-        posts={props.posts}
-        categories={props.categories}
-        tags={props.tags}
+        load={loadMore}
+        posts={data}
+        categories={categories}
+        tags={tags}
       />
+
     </Fragment>
   );
 }
 
-export function getStaticProps() {
-  const allItems = getAllItems("posts");
-  const categories = getPostCategories();
-  const tags = getPostTags();
-
+export async function getStaticProps() {
+  const filter = await useProductQueries()
   return {
     props: {
-      posts: allItems,
-      categories,
-      tags,
+      ...filter
     },
   };
 }

@@ -34,7 +34,7 @@ function Services({ services }) {
                                         <div
                                             onMouseEnter={() => { handleClick(service) }}
                                             className='service-box cursor-pointer transition-all'
-                                            key={service?.id}>
+                                            key={service.id}>
                                             <div className='service-box-inner'>
                                                 <div className='service-list'>
                                                     <div className='icon'>
