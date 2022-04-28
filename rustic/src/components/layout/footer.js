@@ -1,7 +1,7 @@
 import * as AiIcons from 'react-icons/ai';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import {FaFacebook,FaTwitter,FaInstagram} from "react-icons/fa";
 
 function Footer() {
     return (
@@ -24,12 +24,12 @@ function Footer() {
                                 <h2 className='title text-slate-800 font-sans'>Contact</h2>
                                 <ul className='contact-info mt-[25px]'>
                                     <li>
-                                        144-11, 97th Avenue, Queens,<br /> New York, NY 11435
+                                        144-11, 97th Avenue, Queens,<br/> New York, NY 11435
                                     </li>
                                     <li>
                                         <Link href='mailto:hello@Rusticstudio.co'>
                                             <a className='hover:text-black transition-all'>
-                                                megapower.dev@gmail.com
+                                                 megapower.dev@gmail.com
                                             </a>
                                         </Link>
                                     </li>
@@ -133,21 +133,21 @@ function Footer() {
                                     <li>
                                         <Link href='https://twitter.com/'>
                                             <a>
-                                                <FaTwitter />
+                                                <FaTwitter/>
                                             </a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href='https://facebook.com/'>
                                             <a>
-                                                <FaFacebook />
+                                                <FaFacebook/>
                                             </a>
                                         </Link>
                                     </li>
                                     <li>
                                         <Link href='https://instagram.com/'>
                                             <a>
-                                                <FaInstagram />
+                                                <FaInstagram/>
                                             </a>
                                         </Link>
                                     </li>

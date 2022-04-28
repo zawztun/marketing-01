@@ -88,7 +88,5 @@ module.exports = {
     variants: {
         extand: {},
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-    ],
+    plugins: [],
 };
